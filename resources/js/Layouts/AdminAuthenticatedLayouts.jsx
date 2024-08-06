@@ -116,23 +116,24 @@ export default function Authenticated({ user, header, children }) {
             <div class="dashboard-container">
         <aside class="sidebar">
             <div class="sidebar-header">
-                <img src="https://i.ibb.co/YfdNcmJ/fu.png" alt="Logo" class="logo" />
+                <img src="https://i.ibb.co/YfdNcmJ/fu.png" alt="Logo" class="logo"/>
             </div>
             <ul class="sidebar-menu">
-                <li><a href="/dashboard" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
-                <li><a href="/academic-schedule"><i class="fas fa-calendar-alt"></i> Academic Schedule</a></li>
-                <li><a href="/results"><i class="fas fa-calendar-alt"></i> Results</a></li>
-                <li><a href="/announcement"><i class="fas fa-bullhorn"></i> Announcement</a></li>
-                <li><a href="/extra-study-materials"><i class="fas fa-book"></i> Extra Study Materials</a></li>
+                <li><a href="/Admin-Dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="#assignments-section"><i class="fas fa-tasks"></i> Assignments</a></li>
+                <li><a href="#results-section"><i class="fas fa-chart-bar"></i> Results</a></li>
+                <li><a href="#announcements-section"><i class="fas fa-bullhorn"></i> Announcements</a></li>
+                <li><a href="#materials-section"><i class="fas fa-book"></i> Study Materials</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
             </ul>
             <a href="index.html" class="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
         </aside>
         <main class="main-content">
             <header class="main-header">
-                <input type="text" class="search-bar" placeholder="Search" />
+                <input type="text" class="search-bar" placeholder="Search"/>
                 <div class="user-info">
-                    <img src="https://via.placeholder.com/5" alt="User" class="user-avatar " />
-                    <span>Jss1 </span>
+                    <img src="https://via.placeholder.com/5" alt="Admin" class="user-avatar"/>
+                    <span>Admin Name</span>
                 </div>
             </header>
             {children}

@@ -7,11 +7,37 @@ export default function Welcome() {
 
     return (
         <>
-            <div className="my-div flex flex-col items-center justify-center">
-                <h1 className="text-[100px] font-bold text-[#0d830f]">SIDS</h1>
-                <p className="mb-8">Student Information Dissemination System</p>
-                <button> Welcome</button>
+             <header>
+        <nav>
+		    <img src="https://i.ibb.co/YfdNcmJ/fu.png" alt="Logo" class="logo" />
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="login.html">Log in</a></li>
+                <li><a href="#">Sign up</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <div class="hero-content">
+            <h1>STUDENT INFORMATION DISSEMINATION SYSTEM </h1>
+            <p>Your gateway to school announcements, results, and study materials.</p>
+            <div class="cta-buttons">
+                <a href="/login" class="try-now">Welcome</a>
+                <button class="learn-more">Learn More</button>
             </div>
+        </div>
+        <img src="https://i.ibb.co/Z82SW64/image.png" alt="Hero Image" class="hero-image" />
+    </section>
+
+    <section id="information">
+        {/* <!-- Add your section content here --> */}
+    </section>
+
+    <section id="contact">
+        {/* <!-- Add your section content here --> */}
+    </section>
         </>
     )
 }
