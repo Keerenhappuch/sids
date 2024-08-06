@@ -45,7 +45,7 @@ Route::get('/Admin-Dashboard', function(){
 })->middleware(['auth', 'verified'])->name('Admin-Dashboard');
 
 Route::get('/Admin', function(){
-    return Inertia::render('AdminLogin');
+    return Inertia::render('Auth/AdminLogin');
 })->middleware(['auth', 'verified'])->name('Admin');
 
 
