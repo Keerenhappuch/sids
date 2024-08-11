@@ -1,7 +1,26 @@
 import AdminAuthenticatedLayout from '@/Layouts/AdminAuthenticatedLayouts';
-import { Head } from '@inertiajs/react';
+import { Head, useForm, usePage } from '@inertiajs/react';
+import InputLabel from "@/Components/InputLabel.jsx";
+import TextInput from "@/Components/TextInput.jsx";
+import {Textarea} from "@headlessui/react";
+import PrimaryButton from "@/Components/PrimaryButton.jsx";
 
 export default function Edit({ auth, mustVerifyEmail, status }) {
+    const { flash } = usePage().props
+
+    const {data, setData, post, processing, errors, reset} = useForm({
+        title: '',
+        description: '',
+    })
+
+    const submitForm = (e) => {
+        e.preventDefault();
+
+        post('/create-announcement', {
+            onFinish: () => reset('title','description')
+        });
+    }
+
     return (
         <AdminAuthenticatedLayout
             user={auth.user}
@@ -47,27 +66,53 @@ export default function Edit({ auth, mustVerifyEmail, status }) {
             <section/>
             <section id="announcements-section" class="admin-section">
                 <h2>Post Announcements</h2>
-                <form>
-                    <label for="announcement-title">Title</label>
-                    <input type="text" id="announcement-title" name="announcement-title" required/>
+                <form onSubmit={submitForm}>
+                    {flash && flash.success && (
+                        <>
+                            <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative"
+                                 role="alert">
+                                <strong className="font-bold">Success!</strong>
+                                <span className="block sm:inline">{flash.success}</span>
+                                <span className="absolute top-0 bottom-0 right-0 px-4 py-3">
+                            </span>
+                            </div>
+                        </>
+                    )}
+                    <InputLabel for="announcement-title">Title</InputLabel>
+                    <TextInput
+                        type="text"
+                        value={data.title}
+                        onChange={(e) => setData('title', e.target.value)}
+                        isFocused={true}
+                        id="announcement-title"
+                        name="announcement-title"
+                        required
+                    />
 
-                    <label for="announcement-description">Description</label>
-                    <textarea id="announcement-description" name="announcement-description" rows="4" required></textarea>
+                    <InputLabel for="announcement-description">Description</InputLabel>
+                    <Textarea
+                        value={data.description}
+                        onChange={(e) => setData('description', e.target.value)}
+                        id="announcement-description"
+                        name="announcement-description"
+                        rows="4" required>
 
-                    <button type="submit">Post Announcement</button>
+                    </Textarea>
+
+                    <PrimaryButton disabled={processing}>Post Announcement</PrimaryButton>
                 </form>
             </section>
             <section id="materials-section" class="admin-section"/>
-                <h2>Post Study Materials</h2>
-                <form/>
-                    <label for="material-title">Title</label>
-                    <input type="text" id="material-title" name="material-title" required/>
+            <h2>Post Study Materials</h2>
+            <form/>
+            <label for="material-title">Title</label>
+            <input type="text" id="material-title" name="material-title" required/>
 
-                    <label for="material-description">Description</label>
-                    <textarea id="material-description" name="material-description" rows="4" required></textarea>
+            <label for="material-description">Description</label>
+            <textarea id="material-description" name="material-description" rows="4" required></textarea>
 
-                    <label for="material-file">Upload File</label>
-                    <input type="file" id="material-file" name="material-file" required/>
+            <label for="material-file">Upload File</label>
+            <input type="file" id="material-file" name="material-file" required/>
 
                     <button type="submit">Post Study Material</button>
                 <form/>
