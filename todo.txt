@@ -1,0 +1,34 @@
+======================================
+ADMIN DASHBOARD TASKS
+--------------------------------------
+
+1. Create functionality for post announcements ✅
+2. Create functionality for uploading assignments
+3. Create functionality for uploading results
+4. Create functionality for uploading Study Materials
+5. Create functionality for onboarding user.
+
+======================================
+USER DASHBOARD TASKS
+--------------------------------------
+1. Create functionality to display uploaded assignments
+2. Create functionality to display announcements
+3. Create functionality to display uploaded results
+4. Creation functionality to display uploaded study materials
+
+
+======================================
+ALERT SYSTEM TASKS
+--------------------------------------
+1. Create functionality to send announcements as SMS
+2. (Optional): Send SMS to notify that result as been uploaded
+
+
+
+-> Parent brings their children to school
+-> Admin collects information from parents
+-> Admin uploads information through dashboard
+-> Account is then created successfully
+-> Login information is sent to parents through email / sms
+
+

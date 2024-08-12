@@ -23,16 +23,22 @@
         @inertia
         <script>
         // JavaScript to handle tab switching
-        console.log("This works")
-        document.querySelectorAll('.tab-link').forEach(button => {
-            button.addEventListener('click', () => {
-                document.querySelectorAll('.tab-link').forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
 
-                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-                document.getElementById(button.dataset.tab).classList.add('active');
+        window.onload = function() {
+            const tabLinks =  document.querySelectorAll('.tab-link');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+
+            document.querySelectorAll('.tab-link').forEach(button => {
+                button.addEventListener('click', () => {
+                    document.querySelectorAll('.tab-link').forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                    document.getElementById(`${button.dataset.tab}-section`).classList.add('active');
+                });
             });
-        });
+        }
 
         function logout() {
             alert('You have logged out.');
