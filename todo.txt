@@ -3,10 +3,10 @@ ADMIN DASHBOARD TASKS
 --------------------------------------
 
 1. Create functionality for post announcements ✅
-2. Create functionality for uploading assignments
+2. Create functionality for uploading assignments ✅
 3. Create functionality for uploading results
 4. Create functionality for uploading Study Materials
-5. Create functionality for onboarding user.
+5. Create functionality for onboarding user ✅
 
 ======================================
 USER DASHBOARD TASKS

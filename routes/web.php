@@ -18,9 +18,8 @@ Route::get('/', function () {
 Route::get('/dashboard', [DashboardController::class, 'dashboard'])
     ->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/announcement', function(){
-    return Inertia::render('Announcement');
-})->middleware(['auth', 'verified'])->name('announcement');
+Route::get('/announcement', [DashboardController::class, 'getAnnouncements'])
+    ->middleware(['auth', 'verified'])->name('announcement');
 
 Route::get('/academic-schedule', function(){
     return Inertia::render('Academic-Schedule');
@@ -44,7 +43,12 @@ Route::get('/admin-dashboard', function(){
     return Inertia::render('Admin-Dashboard');
 })->middleware(['auth', 'verified'])->name('admin-dashboard');
 
-Route::post('/create-announcement', [DashboardController::class, 'createAnnouncement'])->middleware(['auth', 'verified'])->name('create-announcement');
+Route::post('/create-announcement', [DashboardController::class, 'createAnnouncement'])
+    ->middleware(['auth', 'verified'])->name('create-announcement');
+Route::post('/register-student', [DashboardController::class, 'registerStudent'])
+    ->middleware(['auth', 'verified'])->name('register-student');
+Route::post('/create-assignment', [DashboardController::class, 'createAssignment'])
+    ->middleware(['auth', 'verified'])->name('create-assignment');
 Route::get('/success-create', [DashboardController::class, 'successPage'])->middleware(['auth', 'verified'])->name('success-create');
 
 Route::get('/admin', function(){

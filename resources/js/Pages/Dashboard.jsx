@@ -1,11 +1,15 @@
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head } from '@inertiajs/react';
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
+import { Head } from "@inertiajs/react";
 
 export default function Dashboard({ auth }) {
     return (
         <AuthenticatedLayout
             user={auth.user}
-            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Dashboard</h2>}
+            header={
+                <h2 className="font-semibold text-xl text-gray-800 leading-tight">
+                    Dashboard
+                </h2>
+            }
         >
             <Head title="Dashboard" />
 
@@ -16,18 +20,27 @@ export default function Dashboard({ auth }) {
                     <div class="notices">
                         <div class="notice">
                             <h4>Notice of PTA Meeting</h4>
-							<p> There would be PTA Meeting this Friday, 9th of August, 2024. See you there, Parents!</p>
+                            <p>
+                                {" "}
+                                There would be PTA Meeting this Friday, 9th of
+                                August, 2024. See you there, Parents!
+                            </p>
                         </div>
                         <div class="notice">
                             <h4>Time Extension Notice of Late Payment</h4>
-							<p> Deadline for payment is now Monday, 12th August, 2024!</p>
+                            <p>
+                                {" "}
+                                Deadline for payment is now Monday, 12th August,
+                                2024!
+                            </p>
                         </div>
                         <div class="notice">
-                            <h4>Extra Study Material Uploaded</h4>        
-							<p> Study Material uploaded!</p>
+                            <h4>Extra Study Material Uploaded</h4>
+                            <p> Study Material uploaded!</p>
                         </div>
                     </div>
                 </div>
+
                 <div class="calendar">
                     <h3>Atttendance</h3>
                     <div id="calendar"></div>

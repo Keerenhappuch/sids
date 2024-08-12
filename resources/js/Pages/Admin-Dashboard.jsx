@@ -44,7 +44,7 @@ export default function Edit({ auth, mustVerifyEmail, status }) {
             <ResultsSection />
             <AnnouncementSection />
             <MaterialsSection />
-            <RegisterParentSection/>
+            <RegisterParentSection />
         </AdminAuthenticatedLayout>
     );
 }
