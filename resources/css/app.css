@@ -729,7 +729,6 @@ a {
 
 
 
-
 /* Acdemic Schedule
 /* General Styles */
 
@@ -935,5 +934,113 @@ a {
 
 .admin-section button:hover {
     background: #ffffff;
+}
+
+/* Tab Container */
+.tab-container {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    background-color: #f4f4f4;
+}
+
+/* Tab Navigation */
+.tab-nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: #1f2235;
+    padding: 10px 0;
+    color: #fff;
+}
+
+.tab-nav button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 10px 20px;
+    transition: background-color 0.3s;
+}
+
+.tab-nav button.active {
+    background-color: #343a50;
+    border-bottom: 3px solid #fbe134;
+}
+
+.tab-nav button.logout-button {
+    background-color: #e63946;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.tab-nav button.logout-button:hover {
+    background-color: #d62828;
+}
+
+/* Tab Content */
+.tab-content {
+    display: none;
+    padding: 20px;
+    background-color: #fff;
+    color: #333;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Admin Section */
+.admin-section {
+    margin-top: 20px;
+}
+
+.admin-section h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.admin-section form {
+    display: flex;
+    flex-direction: column;
+    background-color: #1f2235;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.admin-section form label {
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.admin-section form input,
+.admin-section form textarea,
+.admin-section form select {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #343a50;
+    color: #fff;
+}
+
+.admin-section form input[type="url"] {
+    color: #000;
+    background-color: #f4f4f4;
+}
+
+.admin-section form button {
+    background-color: #fbe134;
+    color: #0b0c0c;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.admin-section form button:hover {
+    background-color: #e4b61a;
 }
 

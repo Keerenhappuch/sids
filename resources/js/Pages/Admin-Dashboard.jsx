@@ -28,7 +28,15 @@ export default function Edit({ auth, mustVerifyEmail, status }) {
         >
             <Head title="Profile" />
             <div className="py-12"></div>
-            <section id="assignments-section" class="admin-section"/>
+            <div class="tab-nav">
+            <button class="tab-link active" data-tab="assignments">Assignments</button>
+            <button class="tab-link" data-tab="results">Results</button>
+            <button class="tab-link" data-tab="announcements">Announcements</button>
+            <button class="tab-link" data-tab="materials">Study Materials</button>
+            <button class="tab-link logout-button" onclick="logout()">Logout</button>
+        </div>
+            <section id="assignments-section" class="tab-content active"/>
+                 <section class="admin-section"></section>
                 <h2>Upload Assignments</h2>
                 <form/>
                     <label for="assignment-title">Title</label>
@@ -43,7 +51,8 @@ export default function Edit({ auth, mustVerifyEmail, status }) {
                     <button type="submit">Upload Assignment</button>
                 <form/>
             <section/>
-            <section id="results-section" class="admin-section"/>
+            <section id="results-section" class="tab-content"/>
+                 <section class="admin-section"></section>
                 <h2>Post Results</h2>
                 <form/>
                     <label for="student-name">Student Name</label>
@@ -64,7 +73,8 @@ export default function Edit({ auth, mustVerifyEmail, status }) {
                     <button type="submit">Post Result</button>
                 <form/>
             <section/>
-            <section id="announcements-section" class="admin-section">
+            <section id="announcements-section" class="tab-content">
+                 <section class="admin-section"></section>
                 <h2>Post Announcements</h2>
                 <form onSubmit={submitForm}>
                     {flash && flash.success && (
@@ -102,7 +112,8 @@ export default function Edit({ auth, mustVerifyEmail, status }) {
                     <PrimaryButton disabled={processing}>Post Announcement</PrimaryButton>
                 </form>
             </section>
-            <section id="materials-section" class="admin-section"/>
+            <section id="materials-section" class="tab-content"/>
+             <section class="admin-section"></section>
             <h2>Post Study Materials</h2>
             <form/>
             <label for="material-title">Title</label>
