@@ -44,6 +44,21 @@
             alert('You have logged out.');
             window.location.href = 'login.html'; // Redirect to login page or any other page
         }
+        // Handle form submission for parent registration
+           document.getElementById('parent-registration-form').addEventListener('submit', function(event) {
+           event.preventDefault();
+        // Collect the form data
+        const parentData = {
+            name: document.getElementById('parent-name').value,
+            email: document.getElementById('parent-email').value,
+            phone: document.getElementById('parent-phone').value,
+            address: document.getElementById('parent-address').value,
+            registrationNumber: document.getElementById('parent-registration-number').value,
+        };
+
+        console.log('Parent Registered:', parentData);
+        alert('Parent has been successfully registered!');
+    });
     </script>
     </body>
 </html>
