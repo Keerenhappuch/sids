@@ -30,6 +30,13 @@ export function MaterialsSection() {
                             name="material-file"
                             required
                         />
+                        <label for="link">Or Add a Link</label>
+                        <input 
+                             type="url" 
+                             id="link" 
+                             name="link" 
+                             placeholder="https://example.com">
+                        </input>
 
                         <button type="submit">Post Study Material</button>
                     </form>

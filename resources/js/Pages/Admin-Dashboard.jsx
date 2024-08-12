@@ -4,6 +4,7 @@ import { AnnouncementSection } from "@/Components/admin/AnnouncementSection.jsx"
 import { MaterialsSection } from "@/Components/admin/MaterialsSection.jsx";
 import { Result } from "postcss";
 import { ResultsSection } from "@/Components/admin/ResultsSection.jsx";
+import { RegisterParentSection } from "@/Components/admin/RegisterParentSection.jsx";
 import { AssignmentsSection } from "@/Components/admin/AssignmentsSection.jsx";
 
 export default function Edit({ auth, mustVerifyEmail, status }) {
@@ -19,6 +20,9 @@ export default function Edit({ auth, mustVerifyEmail, status }) {
             <Head title="Profile" />
             <div className="py-12"></div>
             <div class="tab-nav">
+                <button class="tab-link" data-tab="register-parent">
+                    Register Parent
+                </button>
                 <button class="tab-link active" data-tab="assignments">
                     Assignments
                 </button>
@@ -35,10 +39,12 @@ export default function Edit({ auth, mustVerifyEmail, status }) {
                     Logout
                 </button>
             </div>
+
             <AssignmentsSection />
             <ResultsSection />
             <AnnouncementSection />
             <MaterialsSection />
+            <RegisterParentSection/>
         </AdminAuthenticatedLayout>
     );
 }
