@@ -14,8 +14,15 @@ use Illuminate\Support\Str;
 use Inertia\Inertia;
 use Inertia\Response;
 
+use Twilio\Rest\Client;
+
+
+
 class DashboardController extends Controller
 {
+
+    protected $twilioClient;
+    protected $from;
 
     public function generateRandomPassword($length = 12)
     {
@@ -32,7 +39,7 @@ class DashboardController extends Controller
         return substr($shuffledPassword, 0, $length);
     }
     public function dashboard(): Response {
-        
+
         return Inertia::render('Dashboard');
     }
 
@@ -42,6 +49,10 @@ class DashboardController extends Controller
         return Inertia::render('Announcement', ['announcements' => $announcements]);
     }
     public function createAnnouncement(Request $request) {
+
+        $this->twilioClient = new Client(env('TWILIO_ACCOUNT_SID'), env('TWILIO_AUTH_TOKEN'));
+        $this->from = "+1 256 387 7646";
+
         $announcement = Announcement::create(
             [
                 'title' => $request->title,
@@ -50,7 +61,20 @@ class DashboardController extends Controller
             ]
         );
 
-        // TODO: Send announcement to all parents
+
+        $students = Student::all();
+        foreach ($students as $student) {
+            try {
+                $this->twilioClient->messages->create($student->phone_number, [
+                    'from' => $this->from,
+                    'body' => $announcement->description
+                ]);
+            } catch (\Exception $e) {
+
+                return "Message could not be sent successfully: ".$e->getMessage();
+            }
+        }
+
         return "Announcement created";
     }
 
