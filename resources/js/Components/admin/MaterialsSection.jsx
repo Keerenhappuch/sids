@@ -1,44 +1,75 @@
+import InputLabel from "@/Components/InputLabel.jsx";
+import TextInput from "@/Components/TextInput.jsx";
+import { Textarea } from "@headlessui/react";
+import { useForm, usePage } from "@inertiajs/react";
+import PrimaryButton from "@/Components/PrimaryButton.jsx";
+
 export function MaterialsSection() {
+    const { flash } = usePage().props;
+
+    const { data, setData, post, processing, errors, reset } = useForm({
+        title: "",
+        file: null,
+        description: "",
+    });
+
+    const submitForm = (e) => {
+        e.preventDefault();
+
+        const formData = new FormData();
+        formData.append("title", data.title);
+        formData.append("description", data.description);
+        formData.append("file", data.file);
+
+        post("/create-material", {
+            data: formData,
+            headers: {
+                "Content-Type": "multipart/form-data",
+            },
+            onFinish: () => reset("title", "description", "file"),
+        });
+    };
     return (
         <>
-            <section id="materials-section" className="tab-content">
+           <section id="materials-section" className="tab-content active">
                 <section className="admin-section">
                     <h2>Post Study Materials</h2>
-                    <form>
-                        <label htmlFor="material-title">Title</label>
-                        <input
+                    <form onSubmit={submitForm}>
+                        <InputLabel htmlFor="title">Title</InputLabel>
+                        <TextInput
                             type="text"
                             id="material-title"
-                            name="material-title"
+                            name="title"
+                            value={data.title}
+                            onChange={(e) => setData("title", e.target.value)}
                             required
                         />
-
-                        <label htmlFor="material-description">
+                         <InputLabel htmlFor="material-description">
                             Description
-                        </label>
-                        <textarea
+                        </InputLabel>
+                        <Textarea
                             id="material-description"
-                            name="material-description"
+                            name="description"
                             rows="4"
+                            value={data.description}
+                            onChange={(e) =>
+                                setData("description", e.target.value)
+                            }
                             required
-                        ></textarea>
+                        ></Textarea>
 
-                        <label htmlFor="material-file">Upload File</label>
+                        <InputLabel htmlFor="file">Upload File</InputLabel>
                         <input
                             type="file"
                             id="material-file"
-                            name="material-file"
+                            name="file"
+                            onChange={(e) => setData("file", e.target.files[0])}
                             required
                         />
-                        <label for="link">Or Add a Link</label>
-                        <input 
-                             type="url" 
-                             id="link" 
-                             name="link" 
-                             placeholder="https://example.com">
-                        </input>
 
-                        <button type="submit">Post Study Material</button>
+                        <PrimaryButton disabled={processing}>
+                            Post Study Material
+                        </PrimaryButton>
                     </form>
                 </section>
             </section>

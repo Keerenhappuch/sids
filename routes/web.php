@@ -51,6 +51,15 @@ Route::post('/create-assignment', [DashboardController::class, 'createAssignment
     ->middleware(['auth', 'verified'])->name('create-assignment');
 Route::get('/success-create', [DashboardController::class, 'successPage'])->middleware(['auth', 'verified'])->name('success-create');
 
+Route::post('/create-material', [DashboardController::class, 'createMaterial'])
+    ->middleware(['auth', 'verified'])->name('create-material');
+Route::get('/success-create', [DashboardController::class, 'materialsuccessPage'])->middleware(['auth', 'verified'])->name('success-create');
+
+Route::post('/create-result', [DashboardController::class, 'createResult'])
+    ->middleware(['auth', 'verified'])->name('create-result');
+Route::get('/success-create', [DashboardController::class, 'resultsuccessPage'])
+    ->middleware(['auth', 'verified'])->name('success-create');
+
 Route::get('/admin', function(){
     return Inertia::render('Auth/AdminLogin');
 })->middleware(['auth', 'verified'])->name('Admin');

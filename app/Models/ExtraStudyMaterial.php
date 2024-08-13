@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class ExtraStudyMaterial extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'title',
+        'description',
+        'file_path',
+        'subject_id',
+        'user_id',
+    ];
 }
