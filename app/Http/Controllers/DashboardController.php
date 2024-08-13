@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Announcement;
 use App\Models\Assignment;
+use App\Models\ExtraStudyMaterial;
+use App\Models\Result;
 use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -30,6 +32,7 @@ class DashboardController extends Controller
         return substr($shuffledPassword, 0, $length);
     }
     public function dashboard(): Response {
+        
         return Inertia::render('Dashboard');
     }
 
@@ -101,4 +104,48 @@ class DashboardController extends Controller
     public function successPage() {
         echo "Success on creation";
     }
+
+    public function createMaterial(Request $request) {
+    // handle the file
+    if($request->file('file')) {
+        $fileName = $request->file('file')->getClientOriginalName();
+        $filePath = $request->file('file')->storeAs('uploads', $fileName, 'public');
+
+        $material = ExtraStudyMaterial::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'file_path' => $filePath,
+            'user_id' => auth()->id(),
+            'subject_id' => 1,
+        ]);
+
+        return "Material Uploaded successfully";
+    } else {
+        return "Error: No file was uploaded";
+    }
+}
+
+public function materialsuccessPage() {
+    echo "Success on creation";
+}
+
+
+public function createResult(Request $request) {
+    $result = Result::create(
+        [
+            'name' => $request->name,
+            'subject' => $request->subject,
+            'test_score' => $request->test_score,
+            'exam_score' => $request->exam_score,
+            'remark' => $request->remark,
+            'user_id' => auth()->id(),
+        ]
+    );
+
+    return "Result created successfully";
+}
+
+public function resultsuccessPage() {
+    echo "Success on creation";
+}
 }
